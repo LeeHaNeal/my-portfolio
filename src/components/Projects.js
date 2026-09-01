@@ -2,6 +2,30 @@ import React from "react";
 
 const PROJECTS = [
   {
+    name: "선착순 티켓 예매 시스템",
+    period: "2026.08 – 2026.09",
+    role: "개인 프로젝트 · 풀스택 (기획 · 설계 · 구현 · AWS 배포까지 전체 수행)",
+    team: "개인 프로젝트",
+    summary:
+      "동시 요청 1,000건이 몰려도 재고 100개는 정확히 100개만 판매되는 선착순 티켓 예매 서비스. Redis 원자적 연산으로 오버셀을 원천 차단하고, Docker Compose로 컨테이너화해 AWS EC2에 직접 배포·운영 중",
+    problems: [
+      {
+        title: "동시 요청 시 재고 오버셀",
+        detail:
+          "DB 락만으로는 대량 동시 요청 처리에 한계가 있어, Redis + Lua 스크립트로 재고 차감을 하나의 원자적 연산으로 묶어 해결. 동시 요청 1,000건 테스트에서 재고 100개 중 정확히 100건만 성공(성공 100 · 매진 900 · 실패 0)하는 것을 실제로 증명.",
+      },
+      {
+        title: "MySQL InnoDB 데드락",
+        detail:
+          "예약 INSERT와 재고 UPDATE를 한 트랜잭션에 묶은 것이 락 대기 사이클을 만든다는 걸 로그 분석으로 추적. 두 개의 트랜잭션으로 분리하고 재시도 로직을 추가해 동시 요청 실패 321건 → 0건으로 완전히 해결.",
+      },
+    ],
+    stack: ["Java 17", "Spring Boot", "Spring Security", "JWT", "MySQL", "Redis", "Docker", "AWS EC2", "React", "TypeScript"],
+    github: "https://github.com/LeeHaNeal/ticket-reservation",
+    demo: "http://3.34.11.38",
+    note: null,
+  },
+  {
     name: "ReadForce",
     period: "2025.05 – 2025.06",
     role: "팀장 · 백엔드 (챌린지 · 관리자 화면 프론트 병행)",
@@ -66,14 +90,26 @@ function Projects() {
                   {p.period} · {p.team}
                 </p>
               </div>
-              <a
-                className="btn btn-ghost btn-sm"
-                href={p.github}
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub ↗
-              </a>
+              <div className="project-links">
+                {p.demo && (
+                  <a
+                    className="btn btn-primary btn-sm"
+                    href={p.demo}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    라이브 데모 ↗
+                  </a>
+                )}
+                <a
+                  className="btn btn-ghost btn-sm"
+                  href={p.github}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub ↗
+                </a>
+              </div>
             </div>
 
             <p className="project-role">{p.role}</p>

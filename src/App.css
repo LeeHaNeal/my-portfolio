@@ -317,6 +317,12 @@
   margin-bottom: 6px;
 }
 
+.project-links {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
 .project-card h3 {
   font-family: var(--font-display);
   font-size: 1.5rem;
