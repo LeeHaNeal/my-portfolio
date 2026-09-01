@@ -2,6 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 
 const FIX_LOG = [
   {
+    project: "선착순 티켓 예매",
+    before: "예약 저장과 재고 차감을 한 트랜잭션에 묶어 MySQL InnoDB 데드락 발생",
+    after: "트랜잭션 분리 + 재시도 로직으로 동시 요청 실패 321건 → 0건 해결",
+    tag: "RESOLVED",
+  },
+  {
     project: "ReadForce",
     before: "Gemini 응답이 마크다운·제어문자로 깨져 파싱 실패",
     after: "전처리 + 복구 fallback으로 파싱 안정화",
