@@ -2,6 +2,30 @@ import React from "react";
 
 const PROJECTS = [
   {
+    name: "올마켓 (결제 연동 주문 시스템)",
+    period: "2026.09",
+    role: "개인 프로젝트 · 풀스택 (기획 · 설계 · 구현 · 배포까지 전체 수행)",
+    team: "개인 프로젝트",
+    summary:
+      "Provider 인터페이스로 mock PG와 실제 PG를 자유롭게 전환할 수 있는 이커머스 주문 시스템. Next.js 15 Server Actions로 결제 요청 → 콜백 → 승인까지 전체 흐름을 구현하고, 실제 토스페이먼츠 테스트 결제까지 붙여 운영 환경에 배포",
+    problems: [
+      {
+        title: "재고 차감 동시성",
+        detail:
+          "결제 승인 시점에 재고를 차감하는 구조라, 동시에 여러 주문이 마지막 재고를 두고 경쟁하면 오버셀이 발생할 수 있음. `UPDATE ... WHERE stock >= quantity` 형태의 원자적 조건부 업데이트로 재고가 부족하면 업데이트 자체가 실패하도록 만들고, 트랜잭션 내에서 이를 감지해 결제를 롤백·실패 처리하도록 구현.",
+      },
+      {
+        title: "서버리스 환경의 DB 커넥션 풀링",
+        detail:
+          "Vercel 서버리스 함수는 인스턴스마다 새 커넥션을 맺어 짧은 시간에 커넥션 수가 급증하는 문제가 있음. Neon의 pgbouncer 기반 pooled connection을 런타임 접속용으로, 풀링을 우회하는 direct connection을 마이그레이션 전용으로 분리해 Prisma 스키마에 구성해 해결.",
+      },
+    ],
+    stack: ["Next.js 15", "TypeScript", "Prisma", "PostgreSQL (Neon)", "Tailwind CSS", "토스페이먼츠 API", "Vercel"],
+    github: "https://github.com/LeeHaNeal/order-system",
+    demo: "https://ohmarket-store.vercel.app",
+    note: null,
+  },
+  {
     name: "선착순 티켓 예매 시스템",
     period: "2026.08 – 2026.09",
     role: "개인 프로젝트 · 풀스택 (기획 · 설계 · 구현 · AWS 배포까지 전체 수행)",
