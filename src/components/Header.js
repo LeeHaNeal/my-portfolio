@@ -2,6 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 
 const FIX_LOG = [
   {
+    project: "올마켓",
+    before: "결제 승인 시점에 재고를 차감하는 구조라 동시 주문 시 마지막 재고 오버셀 위험",
+    after: "조건부 원자적 업데이트(UPDATE ... WHERE stock >= quantity)로 재고 부족 시 트랜잭션 롤백·결제 실패 처리",
+    tag: "RESOLVED",
+  },
+  {
     project: "선착순 티켓 예매",
     before: "예약 저장과 재고 차감을 한 트랜잭션에 묶어 MySQL InnoDB 데드락 발생",
     after: "트랜잭션 분리 + 재시도 로직으로 동시 요청 실패 321건 → 0건 해결",
