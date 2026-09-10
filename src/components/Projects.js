@@ -28,10 +28,10 @@ const PROJECTS = [
   {
     name: "선착순 티켓 예매 시스템",
     period: "2026.08 – 2026.09",
-    role: "개인 프로젝트 · 풀스택 (기획 · 설계 · 구현 · AWS 배포까지 전체 수행)",
+    role: "개인 프로젝트 · 풀스택 (기획 · 설계 · 구현 · 배포까지 전체 수행)",
     team: "개인 프로젝트",
     summary:
-      "동시 요청 1,000건이 몰려도 재고 100개는 정확히 100개만 판매되는 선착순 티켓 예매 서비스. Redis 원자적 연산으로 오버셀을 원천 차단하고, Docker Compose로 컨테이너화해 AWS EC2에 직접 배포·운영 중",
+      "동시 요청 1,000건이 몰려도 재고 100개는 정확히 100개만 판매되는 선착순 티켓 예매 서비스. Redis 원자적 연산으로 오버셀을 원천 차단하고, Docker Compose로 컨테이너화해 Render + Neon + Upstash 조합으로 배포·운영 중",
     problems: [
       {
         title: "동시 요청 시 재고 오버셀",
@@ -44,9 +44,9 @@ const PROJECTS = [
           "예약 INSERT와 재고 UPDATE를 한 트랜잭션에 묶은 것이 락 대기 사이클을 만든다는 걸 로그 분석으로 추적. 두 개의 트랜잭션으로 분리하고 재시도 로직을 추가해 동시 요청 실패 321건 → 0건으로 완전히 해결.",
       },
     ],
-    stack: ["Java 17", "Spring Boot", "Spring Security", "JWT", "MySQL", "Redis", "Docker", "AWS EC2", "React", "TypeScript"],
+    stack: ["Java 17", "Spring Boot", "Spring Security", "JWT", "PostgreSQL (Neon)", "Redis (Upstash)", "Docker", "Render", "React", "TypeScript"],
     github: "https://github.com/LeeHaNeal/ticket-reservation",
-    demo: "http://3.34.11.38",
+    demo: "https://ticket-reservation-frontend-1wia.onrender.com",
     note: null,
   },
   {
