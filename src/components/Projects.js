@@ -2,6 +2,30 @@ import React from "react";
 
 const PROJECTS = [
   {
+    name: "실시간 룸 기반 채팅 시스템",
+    period: "2026.09",
+    role: "개인 프로젝트 · 풀스택 (기획 · 설계 · 구현 · 배포까지 전체 수행)",
+    team: "개인 프로젝트",
+    summary:
+      "참가 코드로 입장하는 룸 기반 실시간 채팅 서비스. WebSocket(STOMP)과 Redis Pub/Sub으로 서버를 여러 대 띄워도 어느 서버에 접속했는지와 무관하게 채팅·타이핑·강퇴 이벤트가 실시간 동기화되는 것을 직접 증명",
+    problems: [
+      {
+        title: "STOMP 개인 메시지가 엉뚱한 사용자에게 전달되는 문제",
+        detail:
+          "`@SendToUser`/`convertAndSendToUser`는 세션의 `Principal.getName()`을 키로 개인 메시지를 라우팅하는데, `CustomUserDetails`가 `Principal`을 구현하지 않아 Spring Security가 의도치 않은 식별자를 반환하고 있었음. `Principal`을 구현하고 `getName()`이 이메일을 반환하도록 고쳐 개인 라우팅을 정상화.",
+      },
+      {
+        title: "프리티어 인스턴스 다운 → 무상태 아키텍처로 재설계",
+        detail:
+          "AWS EC2(t3.micro, RAM 1GB) 한 대에 MySQL·Redis·백엔드·프론트를 Docker Compose로 같이 띄웠더니 재부팅 시 컨테이너들이 동시에 메모리를 소진해 SSH 접속조차 안 되는 상태에 빠짐. 임시 조치 대신 MySQL→PostgreSQL 마이그레이션 후 Neon·Upstash·Render 조합으로 재배포해, 서버 사양을 신경 쓸 필요 없이 상시 무료로 운영 가능한 구조로 전환.",
+      },
+    ],
+    stack: ["Java 17", "Spring Boot", "Spring Security", "JWT", "Spring WebSocket (STOMP)", "PostgreSQL (Neon)", "Redis (Upstash)", "Docker", "Render", "React", "TypeScript"],
+    github: "https://github.com/LeeHaNeal/chat-room-system",
+    demo: "https://chat-room-system-frontend.onrender.com",
+    note: null,
+  },
+  {
     name: "올마켓 (결제 연동 주문 시스템)",
     period: "2026.09",
     role: "개인 프로젝트 · 풀스택 (기획 · 설계 · 구현 · 배포까지 전체 수행)",
