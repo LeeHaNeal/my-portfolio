@@ -1,9 +1,10 @@
 import React from "react";
+import Reveal from "./Reveal";
 
 function Contact() {
   return (
     <footer id="contact" className="footer">
-      <div className="footer-inner">
+      <Reveal as="div" className="footer-inner">
         <p className="footer-lead mono">READY TO CONNECT</p>
         <h2>같이 만들어볼까요?</h2>
         <div className="footer-links">
@@ -12,7 +13,7 @@ function Contact() {
             github.com/LeeHaNeal
           </a>
         </div>
-      </div>
+      </Reveal>
       <p className="footer-copy mono">© {new Date().getFullYear()} Lee HaNeal</p>
     </footer>
   );

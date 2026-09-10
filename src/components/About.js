@@ -1,22 +1,23 @@
 import React from "react";
 import profilePhoto from "../assets/profile.jpg";
+import Reveal from "./Reveal";
 
 function About() {
   return (
     <section id="about" className="section about">
-      <div className="section-head">
+      <Reveal as="div" className="section-head">
         <span className="section-num mono">ABOUT</span>
         <h2>서버 구조를 이해하고, 화면까지 완성합니다</h2>
-      </div>
+      </Reveal>
       <div className="about-layout">
-        <div className="about-photo-wrap">
+        <Reveal as="div" className="about-photo-wrap">
           <img
             className="about-photo"
             src={profilePhoto}
             alt="이하늘"
           />
-        </div>
-        <div className="about-body">
+        </Reveal>
+        <Reveal as="div" className="about-body" delay={120}>
           <p>
             동서울대학교에서 컴퓨터정보를 전공하고, 더조은컴퓨터아카데미강남
             Java 풀스택 취업 캠프를 8개월간 거치며 백엔드부터 프론트엔드까지
@@ -34,7 +35,7 @@ function About() {
             불규칙한 응답, 프론트-백엔드 간 타입 불일치처럼 눈에 잘 안 띄는
             지점까지 코드로 들어가 확인하고 고칩니다.
           </p>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

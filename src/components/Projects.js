@@ -1,4 +1,5 @@
 import React from "react";
+import Reveal from "./Reveal";
 
 const PROJECTS = [
   {
@@ -124,13 +125,13 @@ const PROJECTS = [
 function Projects() {
   return (
     <section id="projects" className="section projects">
-      <div className="section-head">
+      <Reveal as="div" className="section-head">
         <span className="section-num mono">PROJECTS</span>
         <h2>프로젝트</h2>
-      </div>
+      </Reveal>
       <div className="project-list">
-        {PROJECTS.map((p) => (
-          <article className="project-card" key={p.name}>
+        {PROJECTS.map((p, i) => (
+          <Reveal as="article" className="project-card" key={p.name} delay={Math.min(i, 3) * 80}>
             <div className="project-card-head">
               <div>
                 <h3>{p.name}</h3>
@@ -183,7 +184,7 @@ function Projects() {
             </div>
 
             {p.note && <p className="project-note">🏆 {p.note}</p>}
-          </article>
+          </Reveal>
         ))}
       </div>
     </section>
